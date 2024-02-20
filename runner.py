@@ -99,16 +99,23 @@ class Sign_in:
             #print ii.tag_name
             print(ii.get_attribute('id'))    # id name as string
         driver.switch_to.frame(driver.find_element(By.TAG_NAME,'iframe'))
-        ids = driver.find_elements(By.XPATH,"//*[name()='rect'][@fill='#bfa889']")
+        ids = driver.find_elements(By.XPATH,"//*[name()='rect']")
         for ii in ids:
             #print ii.tag_name
-            print(ii.get_attribute('x'))    # id name as string
-        driver.find_element(By.XPATH,"//*[name()='rect'][@fill='#bfa889']").click()
+            try:
+                ii.click()
+                print("clicked")
+                break
+            except Exception as e:
+                continue
+            # print(ii.get_attribute('x'))    # id name as string
+        # driver.find_element(By.XPATH,"//*[name()='rect'][@fill='#bfa889']").click()
         # driver.find_element(By.XPATH, "//*[contains(@id,'ez_canvas') ]").click()
-        # driver.find_element(By.XPATH, "//a[ contains(@id, 'nextTicketSelection')]").click()
-        # select = Select(driver.find_element(By.TAG_NAME,'select'))	
-        # select.select_by_value("1")
-        # driver.find_element(By.XPATH, "//a[ contains(@id, 'nextPayment')]").click()
+        driver.find_element(By.XPATH, "//a[ contains(@id, 'nextTicketSelection')]").click()
+        time.sleep(2)
+        select = Select(driver.find_element(By.TAG_NAME,'select'))	
+        select.select_by_value("1")
+        driver.find_element(By.XPATH, "//a[ contains(@id, 'nextPayment')]").click()
 
 
         # # driver.switch_to.frame(driver.find_element(By.TAG_NAME, "frame"))
