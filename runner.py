@@ -94,23 +94,29 @@ class Sign_in:
         time.sleep(2)
         # driver.find_element(By.XPATH, "//rect[ contains(@fill, '#baa885')]").click()
         # '//*[name()="rect"][@id="id123"]'
-        ids = driver.find_elements(By.XPATH,'//*[@fill]')
-        for ii in ids:
-            #print ii.tag_name
-            print(ii.get_attribute('x'))    # id name as string
-        driver.find_element(By.XPATH, "//*[contains(@fill,'#bea880') ]").click()
-        driver.find_element(By.XPATH, "//a[ contains(@id, 'nextTicketSelection')]").click()
-        select = Select(driver.find_element(By.TAG_NAME,'select'))	
-        select.select_by_value("1")
-        driver.find_element(By.XPATH, "//a[ contains(@id, 'nextPayment')]").click()
-
-
-        # driver.switch_to.frame(driver.find_element(By.TAG_NAME, "frame"))
-        # driver.find_element(By.TAG_NAME, "div")
-        ids = driver.find_elements(By.XPATH,'//*[@id]')
+        ids = driver.find_elements(By.TAG_NAME,'iframe')
         for ii in ids:
             #print ii.tag_name
             print(ii.get_attribute('id'))    # id name as string
+        driver.switch_to.frame(driver.find_element(By.TAG_NAME,'iframe'))
+        ids = driver.find_elements(By.XPATH,"//*[name()='rect'][@fill='#bfa889']")
+        for ii in ids:
+            #print ii.tag_name
+            print(ii.get_attribute('x'))    # id name as string
+        driver.find_element(By.XPATH,"//*[name()='rect'][@fill='#bfa889']").click()
+        # driver.find_element(By.XPATH, "//*[contains(@id,'ez_canvas') ]").click()
+        # driver.find_element(By.XPATH, "//a[ contains(@id, 'nextTicketSelection')]").click()
+        # select = Select(driver.find_element(By.TAG_NAME,'select'))	
+        # select.select_by_value("1")
+        # driver.find_element(By.XPATH, "//a[ contains(@id, 'nextPayment')]").click()
+
+
+        # # driver.switch_to.frame(driver.find_element(By.TAG_NAME, "frame"))
+        # # driver.find_element(By.TAG_NAME, "div")
+        # ids = driver.find_elements(By.XPATH,'//*[@id]')
+        # for ii in ids:
+        #     #print ii.tag_name
+        #     print(ii.get_attribute('id'))    # id name as string
         # driver.find_element(By.CLASS_NAME, "layerPop").send_keys('adtgww')
         # driver.find_element(By.CLASS_NAME, "layerPop").click()
         driver.save_screenshot('./test.png')
